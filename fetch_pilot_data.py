@@ -1,42 +1,47 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+import requests
+from bs4 import BeautifulSoup
 
 def fetch_pilot_data():
-    options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
+    url = "http://www.ulsanpilot.co.kr/main/pilot_forecast.php"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+    }
 
-    service = Service(executable_path='C:/Users/leeja/chromedriver-win64/chromedriver.exe')
-    driver = webdriver.Chrome(service=service, options=options)
+    response = requests.get(url, headers=headers)
+    response.encoding = 'utf-8'
 
-    driver.get('http://www.ulsanpilot.co.kr/main/pilot_forecast.php')
+    if response.status_code != 200:
+        raise Exception(f"❌ 요청 실패: {response.status_code}")
 
-    wait = WebDriverWait(driver, 10)
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'table.comm_table tbody#cz_or_assign_s01 tr')))
+    soup = BeautifulSoup(response.text, "html.parser")
+    table = soup.find("table", {"class": "table_list"})
 
-    rows = driver.find_elements(By.CSS_SELECTOR, 'table.comm_table tbody#cz_or_assign_s01 tr')
-    data_list = []
+    if table is None:
+        raise Exception("❌ 테이블을 찾을 수 없습니다.")
 
-    for row in rows:
-        cells = row.find_elements(By.TAG_NAME, 'td')
-        if len(cells) < 5:
-            continue
-        data = {
-            "id": cells[0].text.strip(),
-            "status": cells[1].text.strip(),
-            "time": cells[3].text.strip(),
-            "ship_name": cells[4].text.strip(),
-            "from": cells[10].text.strip() if len(cells) > 10 else "",
-            "to": cells[11].text.strip() if len(cells) > 11 else "",
-            "remark": cells[19].text.strip() if len(cells) > 19 else ""
+    rows = table.find_all("tr")[1:]  # 첫 번째 tr은 헤더이므로 제외
+    ships = []
+
+    for idx, row in enumerate(rows):
+        cols = row.find_all("td")
+        if len(cols) < 6:
+            continue  # 데이터가 부족한 경우 스킵
+
+        ship_data = {
+            "id": str(idx + 1),
+            "status": cols[0].text.strip(),
+            "time": cols[1].text.strip(),
+            "ship_name": cols[2].text.strip(),
+            "from": cols[3].text.strip(),
+            "to": cols[4].text.strip(),
+            "remark": cols[5].text.strip()
         }
-        data_list.append(data)
+        ships.append(ship_data)
 
-    driver.quit()
-    return data_list
+    return ships
+
+# ✅ 확인용 출력
+if __name__ == "__main__":
+    ships = fetch_pilot_data()
+    for ship in ships:
+        print(ship)

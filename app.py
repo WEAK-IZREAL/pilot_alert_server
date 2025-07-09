@@ -1,14 +1,13 @@
 from flask import Flask, Response, request, jsonify
 import json, os, time, threading
 from alert_generator import generate_alert_messages
-from fetch_pilot_data import fetch_pilot_data
 from compare_data import check_for_updates
+from bs4 import BeautifulSoup
 
 import firebase_admin
 from firebase_admin import credentials, messaging
 
 if not firebase_admin._apps:
-    import json
     firebase_credentials_json = os.environ.get("FIREBASE_CREDENTIALS_JSON")
     if firebase_credentials_json:
         cred_dict = json.loads(firebase_credentials_json)
@@ -16,11 +15,45 @@ if not firebase_admin._apps:
         firebase_admin.initialize_app(cred)
     else:
         raise RuntimeError("❌ 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
+
 app = Flask(__name__)
 
 DATA_FILE = 'previous_data.json'
 FAVORITES_FILE = 'favorites.json'
 ALARM_MODE_FILE = 'alarm_modes.json'
+
+HTML_FILE = 'ulsanpilot.html'
+
+def fetch_pilot_data():
+    with open(HTML_FILE, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    soup = BeautifulSoup(html, "html.parser")
+    data_list = []
+
+    for table_id in ["cz_or_assign_s01", "cz_or_assign_s02"]:
+        table = soup.find("tbody", {"id": table_id})
+        if not table:
+            continue
+
+        rows = table.find_all("tr")
+        for idx, row in enumerate(rows):
+            cells = row.find_all("td")
+            if len(cells) < 12:
+                continue
+
+            data = {
+                "id": str(idx + 1),
+                "status": cells[1].get_text(strip=True),
+                "time": cells[3].get_text(strip=True),
+                "ship_name": cells[4].get_text(strip=True),
+                "from": cells[10].get_text(strip=True),
+                "to": cells[11].get_text(strip=True),
+                "remark": cells[19].get_text(strip=True) if len(cells) > 19 else ""
+            }
+            data_list.append(data)
+
+    return data_list
 
 def load_json(path, default):
     if os.path.exists(path):
@@ -71,7 +104,6 @@ def remove_unlisted_ships_from_favorites(latest_ships):
     if modified:
         save_to_file(FAVORITES_FILE, favorites)
 
-# ✅ 수정된 함수
 def send_fcm_notification(token, alert_messages, alarm_mode=False):
     print(f"📨 전송 대상 토큰: {token} / 알람 모드: {'ON' if alarm_mode else 'OFF'}")
 

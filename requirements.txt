@@ -1,4 +1,3 @@
-Flask
+flask
 firebase-admin
-requests
-selenium
+beautifulsoup4
