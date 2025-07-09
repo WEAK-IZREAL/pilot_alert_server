@@ -7,11 +7,15 @@ from compare_data import check_for_updates
 import firebase_admin
 from firebase_admin import credentials, messaging
 
-FIREBASE_CREDENTIALS_PATH = 'pilotalertapp-firebase-adminsdk-fbsvc-ea28e551f9.json'
 if not firebase_admin._apps:
-    cred = credentials.Certificate(FIREBASE_CREDENTIALS_PATH)
-    firebase_admin.initialize_app(cred)
-
+    import json
+    firebase_credentials_json = os.environ.get("FIREBASE_CREDENTIALS_JSON")
+    if firebase_credentials_json:
+        cred_dict = json.loads(firebase_credentials_json)
+        cred = credentials.Certificate(cred_dict)
+        firebase_admin.initialize_app(cred)
+    else:
+        raise RuntimeError("❌ 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
 app = Flask(__name__)
 
 DATA_FILE = 'previous_data.json'
