@@ -15,7 +15,7 @@ if not firebase_admin._apps:
         cred = credentials.Certificate(cred_dict)
         firebase_admin.initialize_app(cred)
     else:
-        raise RuntimeError("❌ 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
+        raise RuntimeError("\u274c 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
 
 app = Flask(__name__)
 
@@ -65,7 +65,7 @@ def load_json(path, default):
                 content = f.read().strip()
                 return json.loads(content) if content else default
         except json.JSONDecodeError:
-            print(f"❌ {path} JSON 파싱 실패. 초기화됨.")
+            print(f"\u274c {path} JSON \ud30c\uc2f1 \uc2e4\ud328. \ucd08\uae30\ud654\ub428.")
     return default
 
 def save_to_file(path, data):
@@ -90,7 +90,7 @@ def remove_token_from_storage(token):
         if token in data:
             del data[token]
             save_to_file(file_path, data)
-            print(f"🗑️ {file_path}에서 제거됨: {token}")
+            print(f"\ud83d\uddd1\ufe0f {file_path}\uc5d0\uc11c \uc81c\uac70\ub428: {token}")
 
 def remove_unlisted_ships_from_favorites(latest_ships):
     current_ship_names = {ship['ship_name'].strip().lower() for ship in latest_ships if ship.get('ship_name')}
@@ -102,20 +102,20 @@ def remove_unlisted_ships_from_favorites(latest_ships):
         if len(filtered) != len(ships):
             favorites[token] = filtered
             modified = True
-            print(f"🥹 즐겨창기 정리됨 ({token}): {len(ships)} → {len(filtered)}")
+            print(f"\ud83e\udd79 \uc990\uaca8\ucc3d\uae30 \uc815\ub9ac\ub428 ({token}): {len(ships)} \u2192 {len(filtered)}")
 
     if modified:
         save_to_file(FAVORITES_FILE, favorites)
 
-# FCM 알림 전송
+# FCM \uc54c\ub9bc \uc804\uc1a1
 def send_fcm_notification(token, alert_messages, alarm_mode=False):
-    print(f"📨 전송 대상 토큰: {token} / 알람 모드: {'ON' if alarm_mode else 'OFF'}")
+    print(f"\ud83d\udce8 \uc804\uc1a1 \ub300\uc0c1 \ud1a0\ud070: {token} / \uc54c\ub78c \ubaa8\ub4dc: {'ON' if alarm_mode else 'OFF'}")
 
     sound = "boat_horn" if alarm_mode else "soft_bell"
 
     message = messaging.Message(
         data={
-            "title": "🚨 도선 선발 알림",
+            "title": "\ud83d\udea8 \ub3c4\uc120 \uc120\ubc1c \uc54c\ub9bc",
             "body": "\n".join(alert_messages[:3]),
             "alarm_mode": "on" if alarm_mode else "off",
             "sound": sound
@@ -125,13 +125,13 @@ def send_fcm_notification(token, alert_messages, alarm_mode=False):
     )
 
     try:
-        print(f"📤 메시지 전송 시작...")
+        print(f"\ud83d\udce4 \uba54\uc2dc\uc9c0 \uc804\uc1a1 \uc2dc\uc791...")
         response = messaging.send(message)
-        print(f"✅ FCM 전송 성공: {response}")
+        print(f"\u2705 FCM \uc804\uc1a1 \uc131\uacf5: {response}")
     except Exception as e:
-        print(f"❌ FCM 전송 실패: {e}")
+        print(f"\u274c FCM \uc804\uc1a1 \uc2e4\ud328: {e}")
         if "Requested entity was not found" in str(e):
-            print(f"🗑️ 유효하지 않은 토큰 제거: {token}")
+            print(f"\ud83d\uddd1\ufe0f \uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \ud1a0\ud070 \uc81c\uac70: {token}")
             remove_token_from_storage(token)
 
 def send_notifications_to_users(changes, alerts):
@@ -144,7 +144,7 @@ def send_notifications_to_users(changes, alerts):
             alarm_mode = alarm_modes.get(token, False)
             send_fcm_notification(token, matched_alerts, alarm_mode)
 
-# API 엔드포인트
+# API \uc5d4\ub4dc\ud1a0\ud53c\ud2b8
 @app.route('/api/pilotships')
 def get_pilot_ships():
     try:
@@ -168,18 +168,30 @@ def check_updates():
 
 @app.route('/test-alert')
 def test_alert():
-    test_changes = {
-        "status_added": [{"id": "1", "ship_name": "BLUE KINGDOM", "status": "Heavy Weather"}],
-        "status_removed": [{"id": "2", "ship_name": "TP ENDEAVOUR", "status": "Dense Fog"}],
-        "time_changes": [{"id": "3", "ship_name": "BELSOUTH", "before": "10:00", "after": "11:00"}],
-        "removed_ships": [{"id": "4", "ship_name": "HYODONG CHEMI"}]
-    }
-    alerts = generate_alert_messages(test_changes)
     favorites_map = load_favorites()
     alarm_modes = load_alarm_modes()
 
-    for token, ships in favorites_map.items():
-        filtered = [a for a in alerts if any(s in a for s in ships)]
+    # 모든 즐겨찾기 선박 대상 가상 테스트 알림 생성
+    test_changes = {
+        "status_added": [],
+        "status_removed": [],
+        "time_changes": [],
+        "removed_ships": []
+    }
+
+    for token, ship_list in favorites_map.items():
+        for name in ship_list:
+            test_changes["time_changes"].append({
+                "id": "1",
+                "ship_name": name,
+                "before": "10:00",
+                "after": "11:00"
+            })
+
+    alerts = generate_alert_messages(test_changes)
+
+    for token, ship_list in favorites_map.items():
+        filtered = [alert for alert in alerts if any(name in alert for name in ship_list)]
         if filtered:
             alarm_mode = alarm_modes.get(token, False)
             send_fcm_notification(token, filtered, alarm_mode)
@@ -192,7 +204,7 @@ def register_token():
     token = data.get("token")
     if not token:
         return jsonify({"status": "error", "message": "Missing token"}), 400
-    print(f"✅ 토큰 등록됨: {token}")
+    print(f"\u2705 \ud1a0\ud070 \ub4f1\ub85d\ub428: {token}")
     return jsonify({"status": "success"})
 
 @app.route('/api/register_favorites', methods=['POST'])
@@ -205,7 +217,7 @@ def register_favorites():
     all_favorites = load_favorites()
     all_favorites[token] = favorites
     save_to_file(FAVORITES_FILE, all_favorites)
-    print(f"✅ 즐겨창기 저장: {token} → {favorites}")
+    print(f"\u2705 \uc990\uaca8\ucc3d\uae30 \uc800\uc7a5: {token} \u2192 {favorites}")
     return jsonify({"status": "success"})
 
 @app.route('/api/alarm_mode', methods=['POST'])
@@ -218,14 +230,15 @@ def set_alarm_mode():
     modes = load_alarm_modes()
     modes[token] = mode
     save_to_file(ALARM_MODE_FILE, modes)
-    print(f"✅ 알람 모드 저장: {token} → {'ON' if mode else 'OFF'}")
+    print(f"\u2705 \uc54c\ub78c \ubaa8\ub4dc \uc800\uc7a5: {token} \u2192 {'ON' if mode else 'OFF'}")
     return jsonify({"status": "success"})
 
-# 백그라운드 주기 확인
+# \ubc31\uad00\uadf8\ub7a8 \uc8fc\uae30 \ud655\uc778
+
 def background_scheduler():
     while True:
         try:
-            print("⏰ 도선 데이터 변경 확인 중...")
+            print("\u23f0 \ub3c4\uc120 \ub370\uc774\ud130 \ubcc0\uacbd \ud655\uc778 \uc911...")
             old = load_previous_data()
             new = fetch_pilot_data()
             changes = check_for_updates(old, new)
@@ -235,19 +248,19 @@ def background_scheduler():
                 save_current_data(new)
                 remove_unlisted_ships_from_favorites(new)
         except Exception as e:
-            print(f"❌ 스케줄러 오류: {e}")
+            print(f"\u274c \uc2a4\ucf00\uc904\ub7ec \uc624\ub958: {e}")
         time.sleep(60)
 
-# ✅ Railway 호환을 위한 실행부
+# \u2705 Railway \ud638\ud658\uc744 \uc704\ud55c \uc2e4\ud589\ubd80
 if __name__ == "__main__":
     try:
-        print("🚀 초기 데이터 정리 중...")
+        print("\ud83d\ude80 \ucd08\uae30 \ub370\uc774\ud130 \uc815\ub9ac \uc911...")
         latest = fetch_pilot_data()
         remove_unlisted_ships_from_favorites(latest)
     except Exception as e:
-        print(f"❌ 초기 처리 실패: {e}")
+        print(f"\u274c \ucd08\uae30 \ucc98\ub9ac \uc2e4\ud328: {e}")
 
     threading.Thread(target=background_scheduler, daemon=True).start()
 
-    port = int(os.environ.get("PORT", 5000))  # Railway가 제공하는 포트 사용
+    port = int(os.environ.get("PORT", 5000))  # Railway\uac00 \uc81c\uacf5\ud558\ub294 \ud3ec\ud2b8 \uc0ac\uc6a9
     app.run(host="0.0.0.0", port=port, debug=True)
