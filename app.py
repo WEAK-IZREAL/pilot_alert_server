@@ -1,5 +1,5 @@
 from flask import Flask, Response, request, jsonify
-import json, os, time, threading
+import json, os, time, threading, requests
 from alert_generator import generate_alert_messages
 from compare_data import check_for_updates
 from bs4 import BeautifulSoup
@@ -23,12 +23,20 @@ app = Flask(__name__)
 DATA_FILE = 'previous_data.json'
 FAVORITES_FILE = 'favorites.json'
 ALARM_MODE_FILE = 'alarm_modes.json'
-HTML_FILE = 'ulsanpilot.html'
 
-# HTML 기반 선박 데이터 파싱 함수
+# HTML 기반 선박 데이터 실시간 파싱 함수
+
 def fetch_pilot_data():
-    with open(HTML_FILE, "r", encoding="utf-8") as f:
-        html = f.read()
+    url = "http://www.ulsanpilot.co.kr/main/pilot_forecast.php"
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.encoding = 'utf-8'
+        html = response.text
+    except Exception as e:
+        print(f"[ERROR] 도선 웹사이트 요청 실패: {e}")
+        return []
 
     soup = BeautifulSoup(html, "html.parser")
     data_list = []
