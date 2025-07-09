@@ -15,7 +15,7 @@ if not firebase_admin._apps:
         cred = credentials.Certificate(cred_dict)
         firebase_admin.initialize_app(cred)
     else:
-        raise RuntimeError("\u274c 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
+        raise RuntimeError("[ERROR] 환경 변수 FIREBASE_CREDENTIALS_JSON이 설정되지 않았습니다.")
 
 app = Flask(__name__)
 
@@ -24,10 +24,6 @@ DATA_FILE = 'previous_data.json'
 FAVORITES_FILE = 'favorites.json'
 ALARM_MODE_FILE = 'alarm_modes.json'
 HTML_FILE = 'ulsanpilot.html'
-
-# 특수 문자 제거 함수
-def clean_text(text):
-    return text.encode('utf-8', 'ignore').decode('utf-8')
 
 # HTML 기반 선박 데이터 파싱 함수
 def fetch_pilot_data():
@@ -50,12 +46,12 @@ def fetch_pilot_data():
 
             data = {
                 "id": str(idx + 1),
-                "status": clean_text(cells[1].get_text(strip=True)),
-                "time": clean_text(cells[3].get_text(strip=True)),
-                "ship_name": clean_text(cells[4].get_text(strip=True)),
-                "from": clean_text(cells[10].get_text(strip=True)),
-                "to": clean_text(cells[11].get_text(strip=True)),
-                "remark": clean_text(cells[19].get_text(strip=True)) if len(cells) > 19 else ""
+                "status": cells[1].get_text(strip=True),
+                "time": cells[3].get_text(strip=True),
+                "ship_name": cells[4].get_text(strip=True),
+                "from": cells[10].get_text(strip=True),
+                "to": cells[11].get_text(strip=True),
+                "remark": cells[19].get_text(strip=True) if len(cells) > 19 else ""
             }
             data_list.append(data)
 
@@ -69,12 +65,12 @@ def load_json(path, default):
                 content = f.read().strip()
                 return json.loads(content) if content else default
         except json.JSONDecodeError:
-            print(f"\u274c {path} JSON 파싱 실패. 초기화됨.")
+            print(f"[ERROR] {path} JSON 파싱 실패. 초기화됨.")
     return default
 
 def save_to_file(path, data):
     with open(path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=True, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 def load_previous_data():
     return load_json(DATA_FILE, [])
@@ -94,7 +90,7 @@ def remove_token_from_storage(token):
         if token in data:
             del data[token]
             save_to_file(file_path, data)
-            print(f"\ud83d\uddd1\ufe0f {file_path}에서 제거됨: {token}")
+            print(f"[INFO] {file_path}에서 제거됨: {token}")
 
 def remove_unlisted_ships_from_favorites(latest_ships):
     current_ship_names = {ship['ship_name'].strip().lower() for ship in latest_ships if ship.get('ship_name')}
@@ -106,20 +102,20 @@ def remove_unlisted_ships_from_favorites(latest_ships):
         if len(filtered) != len(ships):
             favorites[token] = filtered
             modified = True
-            print(f"\ud83e\udd79 즐겨찾기 정리됨 ({token}): {len(ships)} → {len(filtered)}")
+            print(f"[CLEANUP] 즐겨찾기 정리됨 ({token}): {len(ships)} -> {len(filtered)}")
 
     if modified:
         save_to_file(FAVORITES_FILE, favorites)
 
 # FCM 알림 전송
 def send_fcm_notification(token, alert_messages, alarm_mode=False):
-    print(f"📨 전송 대상 토큰: {token} / 알람 모드: {'ON' if alarm_mode else 'OFF'}")
+    print(f"[SEND] 전송 대상 토큰: {token} / 알람 모드: {'ON' if alarm_mode else 'OFF'}")
 
     sound = "boat_horn" if alarm_mode else "soft_bell"
 
     message = messaging.Message(
         data={
-            "title": "🚨 도선 선발 알림",
+            "title": "도선 선발 알림",
             "body": "\n".join(alert_messages[:3]),
             "alarm_mode": "on" if alarm_mode else "off",
             "sound": sound
@@ -129,13 +125,13 @@ def send_fcm_notification(token, alert_messages, alarm_mode=False):
     )
 
     try:
-        print(f"📤 메시지 전송 시작...")
+        print("[SEND] 메시지 전송 시작...")
         response = messaging.send(message)
-        print(f"✅ FCM 전송 성공: {response}")
+        print(f"[SUCCESS] FCM 전송 완료: {response}")
     except Exception as e:
-        print(f"❌ FCM 전송 실패: {e}")
+        print(f"[ERROR] FCM 전송 실패: {e}")
         if "Requested entity was not found" in str(e):
-            print(f"🗑️ 유효하지 않은 토큰 제거: {token}")
+            print(f"[INVALID TOKEN] 제거됨: {token}")
             remove_token_from_storage(token)
 
 def send_notifications_to_users(changes, alerts):
@@ -148,6 +144,7 @@ def send_notifications_to_users(changes, alerts):
             alarm_mode = alarm_modes.get(token, False)
             send_fcm_notification(token, matched_alerts, alarm_mode)
 
+# API 엔드포인트
 @app.route('/api/pilotships')
 def get_pilot_ships():
     try:
@@ -180,6 +177,7 @@ def test_alert():
         "time_changes": [],
         "removed_ships": []
     }
+
     for token, ship_list in favorites_map.items():
         for name in ship_list:
             test_changes["time_changes"].append({
@@ -205,7 +203,7 @@ def register_token():
     token = data.get("token")
     if not token:
         return jsonify({"status": "error", "message": "Missing token"}), 400
-    print(f"✅ 토큰 등록됨: {token}")
+    print(f"[REGISTER] 토큰 등록됨: {token}")
     return jsonify({"status": "success"})
 
 @app.route('/api/register_favorites', methods=['POST'])
@@ -218,7 +216,7 @@ def register_favorites():
     all_favorites = load_favorites()
     all_favorites[token] = favorites
     save_to_file(FAVORITES_FILE, all_favorites)
-    print(f"✅ 즐겨찾기 저장: {token} → {favorites}")
+    print(f"[REGISTER] 즐겨찾기 저장: {token} -> {favorites}")
     return jsonify({"status": "success"})
 
 @app.route('/api/alarm_mode', methods=['POST'])
@@ -231,14 +229,14 @@ def set_alarm_mode():
     modes = load_alarm_modes()
     modes[token] = mode
     save_to_file(ALARM_MODE_FILE, modes)
-    print(f"✅ 알람 모드 저장: {token} → {'ON' if mode else 'OFF'}")
+    print(f"[REGISTER] 알람 모드 저장: {token} -> {'ON' if mode else 'OFF'}")
     return jsonify({"status": "success"})
 
 # 백그라운드 주기 확인
 def background_scheduler():
     while True:
         try:
-            print("⏰ 도선 데이터 변경 확인 중...")
+            print("[SCHEDULER] 도선 데이터 변경 확인 중...")
             old = load_previous_data()
             new = fetch_pilot_data()
             changes = check_for_updates(old, new)
@@ -248,17 +246,19 @@ def background_scheduler():
                 save_current_data(new)
                 remove_unlisted_ships_from_favorites(new)
         except Exception as e:
-            print(f"❌ 스케줄러 오류: {e}")
+            print(f"[ERROR] 스케줄러 오류: {e}")
         time.sleep(60)
 
+# Railway 호환을 위한 실행부
 if __name__ == "__main__":
     try:
-        print("🚀 초기 데이터 정리 중...")
+        print("[INIT] 초기 데이터 정리 중...")
         latest = fetch_pilot_data()
         remove_unlisted_ships_from_favorites(latest)
     except Exception as e:
-        print(f"❌ 초기 처리 실패: {e}")
+        print(f"[ERROR] 초기 처리 실패: {e}")
 
     threading.Thread(target=background_scheduler, daemon=True).start()
+
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
