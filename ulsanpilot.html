@@ -1,0 +1,2028 @@
+<html lang="ko" style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><head>
+	<title>울산항도선사회</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1400px, user-scalable=yes">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="robots" content="all">
+	<meta name="author" content="울산항도선사회">
+	<meta name="description" content="울산항 도선사회, 도선요율표, 도선료견적, 최대풍압력 등 온라인 도선 예보시스템 울산항도선사회">
+	<meta name="keywords" content="울산항 도선, 도선사, 도선사회, 울산항, 울산도선, 도선요율, 도선예보, 최대풍압력, 최대풍, 도선료, 도선요율표">
+
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="http://ustug.cmaruw.com/img/sns_img.jpg">
+	<meta property="og:title" content="울산항도선사회">
+	<meta property="og:description" content="울산항 도선사회, 도선요율표, 도선료견적, 최대풍압력 등 온라인 도선 예보시스템 울산항도선사회">
+	<meta property="og:url" content="http://www.ulsanpilot.co.kr/">
+
+	<link rel="canonical" href="http://www.ulsanpilot.co.kr/">
+	<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" media="all" href="../css/font.css">
+	<link rel="stylesheet" media="all" href="../css/style.css">
+	<link rel="stylesheet" media="all" href="../css/layout.css">
+	<link rel="stylesheet" media="all" href="../css/menu.css">
+	<link rel="stylesheet" media="all" href="../css/contents.css">
+	<link rel="stylesheet" media="all" href="../css/board.css">
+	<link rel="stylesheet" media="all" href="../css/program.css">
+	<link rel="stylesheet" media="all" href="../css/nboard.css">
+
+	<script src="../plugin/share/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/d_lnb.js"></script>
+	<script type="text/javascript" src="../js/modernizr.js"></script> <!-- Modernizr -->
+	<script type="text/javascript" src="../js/jquery.vticker-min.js"></script>
+	<script type="text/javascript" src="../js/tytabs.jquery.min.js"></script>
+
+	<!-- 게시판 -->
+	<script type="text/javascript" src="../board/ajax.js"></script>
+	<script type="text/javascript" src="../board/boardScript.js"></script>
+	<script type="text/javascript" src="../SmartEditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<!-- 게시판 -->
+	<!--공통-->
+	<script src="../js/jquery.DB_slideBannerRP.js"></script>
+	<script src="../js/jquery.easing.min.js"></script>
+	<script src="../plugin/owl/owl.carousel.min.js"></script>
+	<script src="../plugin/bxslider/jquery.bxslider.js"></script>
+	<link rel="stylesheet" media="all" href="../plugin/owl/owl.carousel.css">
+	<link rel="stylesheet" media="all" href="../plugin/owl/owl.theme.css">
+	<link rel="stylesheet" media="all" href="../plugin/bxslider/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="../plugin/font-awesome/css/font-awesome.min.css">
+	<!--공통-->
+	<!--[if lt IE 9]>
+<script type="text/javascript" src="../plugin/share/html5.js"></script>
+<script type="text/javascript" src="../plugin/share/respond.min.js"></script>
+<![endif]-->
+	<!--[if lte IE 8]>
+<link href="../css/ie8.css" rel="stylesheet">
+<![endif]-->
+	<!--<script>location.reload();</script>-->
+	<script type="text/javascript">
+		function assign_change() {
+			var s_fg_status1 = "";
+			var s_fg_status2 = "";
+			var s_fg_status3 = "";
+			var s_fg_status4 = "";
+			var s_fg_status5 = "";
+			var s_fg_status6 = "";
+
+			if ($("#s_fg_status1").is(":checked")) {
+				s_fg_status1 = $("#s_fg_status1").val();
+			} else {
+				s_fg_status1 = "";
+			}
+			if ($("#s_fg_status2").is(":checked")) {
+				s_fg_status2 = $("#s_fg_status2").val();
+			} else {
+				s_fg_status2 = "";
+			}
+			if ($("#s_fg_status3").is(":checked")) {
+				s_fg_status3 = $("#s_fg_status3").val();
+			} else {
+				s_fg_status3 = "";
+			}
+			if ($("#s_fg_status4").is(":checked")) {
+				s_fg_status4 = $("#s_fg_status4").val();
+			} else {
+				s_fg_status4 = "";
+			}
+			if ($("#s_fg_status5").is(":checked")) {
+				s_fg_status5 = $("#s_fg_status5").val();
+			} else {
+				s_fg_status5 = "";
+			}
+			if ($("#s_fg_status6").is(":checked")) {
+				s_fg_status6 = $("#s_fg_status6").val();
+			} else {
+				s_fg_status6 = "";
+			}
+
+			var r_data = "";
+			var r_data2 = "";
+
+			r_data = (GetHttpRequest("./get_cz_or_assign_s.php", "s_fg_status1=" + encodeURIComponent(s_fg_status1) + "&s_fg_status2=" + encodeURIComponent(s_fg_status2) + "&s_fg_status3=" + encodeURIComponent(s_fg_status3) + "&s_fg_status4=" + encodeURIComponent(s_fg_status4) + "&s_fg_status5=" + encodeURIComponent(s_fg_status5) + "&s_fg_status6=" + encodeURIComponent(s_fg_status6))).trim();
+			$("#cz_or_assign_s01").html("");
+			if (r_data == "error") {} else {
+				$("#cz_or_assign_s01").html(r_data);
+			}
+
+			r_data2 = (GetHttpRequest("./get_cz_or_assign_s02.php", "s_fg_status1=" + encodeURIComponent(s_fg_status1) + "&s_fg_status2=" + encodeURIComponent(s_fg_status2) + "&s_fg_status3=" + encodeURIComponent(s_fg_status3) + "&s_fg_status4=" + encodeURIComponent(s_fg_status4) + "&s_fg_status5=" + encodeURIComponent(s_fg_status5) + "&s_fg_status6=" + encodeURIComponent(s_fg_status6))).trim();
+			$("#cz_or_assign_s02").html("");
+			if (r_data2 == "error") {} else {
+				$("#cz_or_assign_s02").html(r_data2);
+			}
+
+			setTimeout('assign_reload()', 120000);
+		}
+
+		function assign_reload() {
+			location.reload();
+		}
+
+		$(document).ready(function() {
+			assign_change();
+		});
+	</script>
+
+</head>
+
+<body class="mo" style="">
+	<div class="wrap">
+
+		
+		<div id="tug_forecast" class="no-display lite-box rb">
+			<h1 class="tit_bg bg_bright">도선예보현황판</h1>
+			<div class="lite-inner">
+				<div class="form_box mb20">
+					<ul>
+						<li><span class="fm_list">현재일시</span>
+							<span class="fm_txt ofh">
+								<span class="sp_txt mr10" id="ndate_txt">2025-07-09(수) : 오후 16:23:44</span><input type="button" value="새로고침" class="btn_sumit" onclick="assign_reload();">
+							</span>
+						</li>
+												<li><span class="fm_list">조석정보</span>
+							<span class="fm_txt" style="min-height:47px;">
+								<span>▼</span>00:35 (17)cm&nbsp;&nbsp;&nbsp;
+								<span>▲</span>06:50 (53)cm&nbsp;&nbsp;&nbsp;
+								<span>▼</span>12:22 (30)cm&nbsp;&nbsp;&nbsp;
+								<span>▲</span>18:43 (53)cm&nbsp;&nbsp;&nbsp;일출:05:14&nbsp;&nbsp;&nbsp;일몰:19:40</span>
+						</li>
+						<li><span class="fm_list">진행상태</span>
+							<span class="fm_txt ofh">
+																		<input type="checkbox" name="s_fg_status1" id="s_fg_status1" value="010" onclick="assign_change();"><label for="s_fg_status1" style="padding-left:3px; padding-right:10px;">요청</label>
+																		<input type="checkbox" name="s_fg_status2" id="s_fg_status2" value="020" onclick="assign_change();"><label for="s_fg_status2" style="padding-left:3px; padding-right:10px;">확인</label>
+																		<input type="checkbox" name="s_fg_status3" id="s_fg_status3" value="030" onclick="assign_change();"><label for="s_fg_status3" style="padding-left:3px; padding-right:10px;">변경</label>
+																		<input type="checkbox" name="s_fg_status4" id="s_fg_status4" value="040" onclick="assign_change();"><label for="s_fg_status4" style="padding-left:3px; padding-right:10px;">POB</label>
+																		<input type="checkbox" name="s_fg_status5" id="s_fg_status5" value="050" onclick="assign_change();"><label for="s_fg_status5" style="padding-left:3px; padding-right:10px;">완료</label>
+																		<input type="checkbox" name="s_fg_status6" id="s_fg_status6" value="090" onclick="assign_change();"><label for="s_fg_status6" style="padding-left:3px; padding-right:10px;">취소</label>
+															</span>
+						</li>
+					</ul>
+				</div>
+
+
+				<h2 class="bgtab bg_bright">2025년 07월 09일(수)</h2>
+				<div class="pd_txt">
+					<p class="mb5"><b class="redTxt">[근무도선사]</b>
+						SK -
+						YS -
+						BP -
+						<span class="blTxt">HY</span> -
+						JK -
+						LK -
+						SL -
+						LG -
+						RO -
+						<span class="blTxt">RU</span> -
+						MK -
+						OH -
+						JP -
+						YK -
+						HM -
+						<span class="blTxt">KH</span>
+					</p>
+					<p><b class="blTxt">[근무대기]</b>
+						KD -
+						EK -
+						OB -
+						CJ -
+						KJ -
+						GH -
+						DL -
+						MJ </p>
+				</div>
+				<div class="move_table mb">
+					<table class="comm_table tac">
+						<thead>
+							<tr>
+								<th>NO</th>
+								<th>STATUS</th>
+								<th>C/F</th>
+								<!--th>협회<br />REMARK</th-->
+								<th>TIME</th>
+								<th>SHIP'S NAME</th>
+								<th>PILOT</th>
+								<!--<th>Two.P</th>
+							<th>Co.P</th>-->
+								<th>C/SIGN</th>
+								<th>G/T</th>
+								<th>LOA</th>
+								<th>DFT</th>
+								<th>FROM</th>
+								<th>TO</th>
+								<th>L/A</th>
+								<th>CA</th>
+								<th>S/A</th>
+								<th>B/T</th>
+								<th>T</th>
+								<th>L</th>
+								<th>Q</th>
+								<th style="width:17%;">REMARKS</th>
+							</tr>
+						</thead>
+						<tbody id="cz_or_assign_s01"><tr>
+						<td>1</td>
+						<td><span class="blTxt">P.O.B</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">P.O.B</span></td-->
+						<td>15:30</td>
+						<td style="text-align:left; font-weight:bold; ">LS NEPTUNE</td>
+						<td>LG(56) JP(41) </td>
+						<td>XVLG7</td>
+						<td>30,123</td>
+						<td>183</td>
+						<td>10.8</td>
+						<td style="font-weight:bold; ">E-3</td>
+						<td style="font-weight:bold; ">SP#9</td>
+						<td>JNC</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">대리점협의후 </td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><span class="blTxt">P.O.B</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">P.O.B</span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">AEOLIA</td>
+						<td>RO(43)  </td>
+						<td>5BQN6</td>
+						<td>35,812</td>
+						<td>199</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">YMP#2</td>
+						<td style="font-weight:bold; ">P#64</td>
+						<td>신양</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">좌현접안, 선수라인 31번 비트 직각 접안, 선미 라인 42번에 잡아 주세요</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td><span class="blTxt">P.O.B</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">P.O.B</span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">AQUARIUS T</td>
+						<td>YS(53)  </td>
+						<td>V7A4148</td>
+						<td>29,130</td>
+						<td>183</td>
+						<td>11.2</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SP#3</td>
+						<td>아성</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>코리</td>
+						<td>승검</td>
+						<td style="text-align:left; ">대리점 확인 후/전출항지 싱가폴/접안 후 검역 진행예정</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><span class="blTxt">P.O.B</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">P.O.B</span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">MIRACLE ALPHA</td>
+						<td>BP(70)  </td>
+						<td>151058</td>
+						<td>2,210</td>
+						<td>89</td>
+						<td>3.5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">SK#4-1</td>
+						<td>자이</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">내항선 / MT.YC COSMOS 이안 후  17시에 접안 부탁드립니다.</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><span class="blTxt" style="font-size:0.9em;">PROCESSING</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">PROCESS</span></td-->
+						<td>16:30</td>
+						<td style="text-align:left; font-weight:bold; ">BLUE KINGDOM</td>
+						<td>SK(68)  </td>
+						<td>3FLI8</td>
+						<td>1,984</td>
+						<td>79</td>
+						<td>5.0</td>
+						<td style="font-weight:bold; ">SK#1-1</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><span class="blTxt" style="font-size:0.9em;">PROCESSING</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">PROCESS</span></td-->
+						<td>16:30</td>
+						<td style="text-align:left; font-weight:bold; ">MORNING CELLO</td>
+						<td>SL(64)  YK(51)</td>
+						<td>3FBI3</td>
+						<td>57,542</td>
+						<td>199</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">HCP#1</td>
+						<td style="font-weight:bold; ">P#62</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">유코 / 본항 강취 : 울산 / HEAD 19번 &amp; STERN 6번</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td><span class="blTxt" style="font-size:0.9em;">PROCESSING</span></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt">PROCESS</span></td-->
+						<td>17:15</td>
+						<td style="text-align:left; font-weight:bold; ">WAN HAI 288</td>
+						<td>SK(68)  </td>
+						<td>9V6507</td>
+						<td>20,899</td>
+						<td>175</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">OP#5</td>
+						<td>그레</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>1</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; ">VSR적용대상선박임</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td><span class="blTxt">URGENT</span></td>
+						<td>
+														<span class="blTxt"></span>
+													</td>
+						<!--td><span class="redTxt">URGENT</span></td-->
+						<td style="color:blue;">18:30</td>
+						<td style="text-align:left; font-weight:bold;  color:blue;">JIN HANG 89</td>
+						<td style="color:blue;">  </td>
+						<td style="color:blue;">V3NE6</td>
+						<td style="color:blue;">5,660</td>
+						<td style="color:blue;">128</td>
+						<td style="color:blue;">6.0</td>
+						<td style="font-weight:bold;  color:blue;">P#31</td>
+						<td style="font-weight:bold;  color:blue;">P/S</td>
+						<td style="color:blue;">아성</td>
+						<td style="color:blue;">B</td>
+						<td></td>
+						<td style="color:blue;"></td>
+						<td style="color:blue;">2</td>
+						<td style="color:blue;">코리</td>
+						<td></td>
+						<td style="text-align:left;  color:blue;">재연락예정.</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td></td>
+						<td>
+														<span class="redTxt">◎</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>18:30</td>
+						<td style="text-align:left; font-weight:bold; ">STOLT RENGE</td>
+						<td>SK(68)  </td>
+						<td>9V8763</td>
+						<td>7,488</td>
+						<td>127</td>
+						<td>5.7</td>
+						<td style="font-weight:bold; ">UTK#2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>협운</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">재 연락 드림</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>19:15</td>
+						<td style="text-align:left; font-weight:bold; ">YUHO MARU NO.5</td>
+						<td>  </td>
+						<td>JD3225</td>
+						<td>1,061</td>
+						<td>73</td>
+						<td>3.3</td>
+						<td style="font-weight:bold; ">M-1</td>
+						<td style="font-weight:bold; ">JSTT4</td>
+						<td>우일</td>
+						<td>B</td>
+						<td></td>
+						<td>Y</td>
+						<td></td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">KEOYOUNG STAR 3 이안후 접안(예상이안18시)</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:00</td>
+						<td style="text-align:left; font-weight:bold; ">DING HENG 17</td>
+						<td>  </td>
+						<td>BIOY</td>
+						<td>2,252</td>
+						<td>91</td>
+						<td>5.2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">UTT</td>
+						<td>그레</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>1</td>
+						<td>현대</td>
+						<td>승검</td>
+						<td style="text-align:left; ">대리점확인후</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:00</td>
+						<td style="text-align:left; font-weight:bold; ">SKY JOY</td>
+						<td>  </td>
+						<td>D7CW</td>
+						<td>7,688</td>
+						<td>117</td>
+						<td>5.3</td>
+						<td style="font-weight:bold; ">SOILA2</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>영남</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:30</td>
+						<td style="text-align:left; font-weight:bold; ">EVER CONCISE</td>
+						<td>  </td>
+						<td>3E3545</td>
+						<td>18,658</td>
+						<td>171</td>
+						<td>8.9</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">UNCT#2</td>
+						<td>그레</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>1</td>
+						<td>대송</td>
+						<td>승검</td>
+						<td style="text-align:left; ">VSR적용대상선박임</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>21:00</td>
+						<td style="text-align:left; font-weight:bold; ">AMAGI GALAXY</td>
+						<td>  </td>
+						<td>V7VE9</td>
+						<td>16,455</td>
+						<td>180</td>
+						<td>6.2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">P#5</td>
+						<td>동진</td>
+						<td>L</td>
+						<td>P</td>
+						<td>Y</td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">입항 접안</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>21:00</td>
+						<td style="text-align:left; font-weight:bold; ">ATLANTIC T</td>
+						<td>  </td>
+						<td>V7A2328</td>
+						<td>28,095</td>
+						<td>180</td>
+						<td>7.9</td>
+						<td style="font-weight:bold; ">SP#5</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td>케이</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>21:30</td>
+						<td style="text-align:left; font-weight:bold; ">CS BREEZE</td>
+						<td>  </td>
+						<td>3E3975</td>
+						<td>5,723</td>
+						<td>109</td>
+						<td>5.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">SP#5</td>
+						<td>그레</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 확인 후 / ATLANTIC T 이안 후 / 전 선원 건강 이상 무</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>21:30</td>
+						<td style="text-align:left; font-weight:bold; ">GAS FREEWAY</td>
+						<td>  </td>
+						<td>D7WW</td>
+						<td>4,241</td>
+						<td>100</td>
+						<td>5.9</td>
+						<td style="font-weight:bold; ">LPG#1</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>세화</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>울산</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 재연락</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>22:00</td>
+						<td style="text-align:left; font-weight:bold; ">STENA PROVIDENT</td>
+						<td>  </td>
+						<td>5BWP5</td>
+						<td>29,884</td>
+						<td>186</td>
+						<td>8.5</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">P#63</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td>P</td>
+						<td>Y</td>
+						<td>2</td>
+						<td>진산</td>
+						<td></td>
+						<td style="text-align:left; ">GOLDEN KEY HANA 이안후 접안 요청드립니다.</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>23:00</td>
+						<td style="text-align:left; font-weight:bold; ">TP ENDEAVOUR</td>
+						<td>  </td>
+						<td>LAXY8</td>
+						<td>29,671</td>
+						<td>183</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SK#7</td>
+						<td>NEO</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 확인 후</td>
+					</tr></tbody>
+					</table>
+				</div>
+				<h2 class="bgtab bg_bright">2025년 07월 10일</h2>
+								<div class="pd_txt">
+					<p class="mb5"><b class="redTxt">[근무도선사]</b>
+						MJ -
+						SK -
+						YS -
+						<span class="grTxt">BP</span> -
+						HY -
+						JK -
+						LK -
+						SL -
+						LG -
+						<span class="grTxt">RO</span> -
+						RU -
+						MK -
+						OH -
+						JP -
+						YK -
+						<span class="grTxt">HM</span>
+					</p>
+					<p><b class="blTxt">[근무대기]</b>
+						MS -
+						KD -
+						EK -
+						OB -
+						CJ -
+						KJ -
+						GH -
+						DL </p>
+					<p><b class="blTxt">[조석정보]</b>
+						<span class="fm_txt" style="min-height:47px;">
+							<span>▼</span>01:13 (15)cm&nbsp;&nbsp;&nbsp;
+							<span>▲</span>07:31 (55)cm&nbsp;&nbsp;&nbsp;
+							<span>▼</span>13:01 (29)cm&nbsp;&nbsp;&nbsp;
+							<span>▲</span>19:24 (56)cm&nbsp;&nbsp;&nbsp;일출:05:15&nbsp;&nbsp;&nbsp;일몰:19:40</span>
+					</p>
+				</div>
+				<div class="move_table mb">
+					<table class="comm_table tac">
+						<thead>
+							<tr>
+								<th>NO</th>
+								<th>STATUS</th>
+								<th>C/F</th>
+								<!--th>협회<br />REMARK</th-->
+								<th>TIME</th>
+								<th>SHIP'S NAME</th>
+								<th>PILOT</th>
+								<!--<th>Two.P</th>
+							<th>Co.P</th>-->
+								<th>C/SIGN</th>
+								<th>G/T</th>
+								<th>LOA</th>
+								<th>DFT</th>
+								<th>FROM</th>
+								<th>TO</th>
+								<th>L/A</th>
+								<th>CA</th>
+								<th>S/A</th>
+								<th>B/T</th>
+								<th>T</th>
+								<th>L</th>
+								<th>Q</th>
+								<th style="width:17%;">REMARKS</th>
+							</tr>
+						</thead>
+						<tbody id="cz_or_assign_s02"><tr>
+						<td>1</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>01:00</td>
+						<td style="text-align:left; font-weight:bold; ">WAN HAI 288</td>
+						<td>  </td>
+						<td>9V6507</td>
+						<td>20,899</td>
+						<td>175</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">OP#5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>1</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>01:30</td>
+						<td style="text-align:left; font-weight:bold; ">MIRACLE ALPHA</td>
+						<td>  </td>
+						<td>151058</td>
+						<td>2,210</td>
+						<td>89</td>
+						<td>5.3</td>
+						<td style="font-weight:bold; ">SK#4-1</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td>자이</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">연락 드리겠습니다.</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>02:00</td>
+						<td style="text-align:left; font-weight:bold; ">GINGA MAYA</td>
+						<td>  </td>
+						<td>OYCW2</td>
+						<td>11,690</td>
+						<td>144</td>
+						<td>9.9</td>
+						<td style="font-weight:bold; ">JSTT3</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>베이</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>진산</td>
+						<td></td>
+						<td style="text-align:left; ">최종유선통보</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>02:00</td>
+						<td style="text-align:left; font-weight:bold; ">SUN QUEEN</td>
+						<td>  </td>
+						<td>H9HG</td>
+						<td>2,993</td>
+						<td>91</td>
+						<td>5.6</td>
+						<td style="font-weight:bold; ">SP#4</td>
+						<td style="font-weight:bold; ">P#23</td>
+						<td>신양</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 재연락</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>03:00</td>
+						<td style="text-align:left; font-weight:bold; ">FU ZHI</td>
+						<td>  </td>
+						<td>3E3650</td>
+						<td>5,199</td>
+						<td>110</td>
+						<td>3.5</td>
+						<td style="font-weight:bold; ">COAL</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>(주)웰스</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">재연락드리겠습니다.</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>03:00</td>
+						<td style="text-align:left; font-weight:bold; ">HAFNIA AZOTIC</td>
+						<td>  </td>
+						<td>V7GZ3</td>
+						<td>23,676</td>
+						<td>184</td>
+						<td>10.3</td>
+						<td style="font-weight:bold; ">SK#3</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td>아성</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 확인 후</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>05:00</td>
+						<td style="text-align:left; font-weight:bold; ">ANDRIA</td>
+						<td>  </td>
+						<td>9HA4118</td>
+						<td>39,643</td>
+						<td>224</td>
+						<td>7.2</td>
+						<td style="font-weight:bold; ">SILO</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>신양</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">재연락 드림</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:15</td>
+						<td style="text-align:left; font-weight:bold; ">CENTURY XIAMEN</td>
+						<td>  </td>
+						<td>5LCX3</td>
+						<td>40,946</td>
+						<td>225</td>
+						<td>9.7</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">COAL</td>
+						<td>일진</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">MV. FU ZHI 이안 후 접안</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:15</td>
+						<td style="text-align:left; font-weight:bold; ">HAFNIA AZOTIC</td>
+						<td>  </td>
+						<td>V7GZ3</td>
+						<td>23,676</td>
+						<td>184</td>
+						<td>10.3</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SP#4</td>
+						<td>아성</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">첫도선 확정</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:15</td>
+						<td style="text-align:left; font-weight:bold; ">MARITIME GUARDIAN</td>
+						<td>  </td>
+						<td>9V6711</td>
+						<td>33,355</td>
+						<td>183</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">OTK(S)</td>
+						<td>JNC</td>
+						<td>B</td>
+						<td><span class="redTxt">S</span></td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">정시 승선 부탁드립니다</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:15</td>
+						<td style="text-align:left; font-weight:bold; ">SPRING ALPHA</td>
+						<td>  </td>
+						<td>240030</td>
+						<td>2,212</td>
+						<td>89</td>
+						<td>6.5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">KET#4</td>
+						<td>가나</td>
+						<td>B</td>
+						<td><span class="redTxt">S</span></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:15</td>
+						<td style="text-align:left; font-weight:bold; ">WAN HAI 353</td>
+						<td>  </td>
+						<td>9V7381</td>
+						<td>30,519</td>
+						<td>204</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">UNCT#3</td>
+						<td>그레</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; ">VSR적용대상선박임</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:30</td>
+						<td style="text-align:left; font-weight:bold; ">ATLANTIC T</td>
+						<td>  </td>
+						<td>V7A2328</td>
+						<td>28,095</td>
+						<td>180</td>
+						<td>7.9</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SOILF1</td>
+						<td>케이</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>06:45</td>
+						<td style="text-align:left; font-weight:bold; ">HONG KAI</td>
+						<td>  </td>
+						<td>BONU9</td>
+						<td>4,765</td>
+						<td>109</td>
+						<td>5.5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">LPG#2</td>
+						<td>울마</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>진산</td>
+						<td></td>
+						<td style="text-align:left; ">접안 시 투묘 진행 부탁드립니다. (이안 시, TUG 1척 사용 예정)</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:00</td>
+						<td style="text-align:left; font-weight:bold; ">DING HENG 17</td>
+						<td>  </td>
+						<td>BIOY</td>
+						<td>2,252</td>
+						<td>91</td>
+						<td>4.0</td>
+						<td style="font-weight:bold; ">UTT</td>
+						<td style="font-weight:bold; ">P/S(E-1)</td>
+						<td>그레</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>현대</td>
+						<td>승검</td>
+						<td style="text-align:left; ">대리점확인후/</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:00</td>
+						<td style="text-align:left; font-weight:bold; ">GLORIOUS SUNSHINE</td>
+						<td>  </td>
+						<td>D5VU5</td>
+						<td>29,462</td>
+						<td>183</td>
+						<td>7.0</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SOILA2</td>
+						<td>아성</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>영남</td>
+						<td></td>
+						<td style="text-align:left; ">정시승선부탁드립니다.
+</td>
+					</tr>
+					<tr>
+						<td>17</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:00</td>
+						<td style="text-align:left; font-weight:bold; ">RUI YANG 8</td>
+						<td>  </td>
+						<td>V3NP6</td>
+						<td>2,998</td>
+						<td>99</td>
+						<td>6.2</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td style="font-weight:bold; ">SILO</td>
+						<td>신양</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>1</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">기 선박 이안 후 접안 요망 / 전 출항지 러시아 /  전 선원 건강상태 양호</td>
+					</tr>
+					<tr>
+						<td>18</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:00</td>
+						<td style="text-align:left; font-weight:bold; ">THERMOPYLAE</td>
+						<td>  </td>
+						<td>9HA3539</td>
+						<td>75,283</td>
+						<td>199</td>
+						<td>8.8</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">HCP#2</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">유코 / 전항지 마산 / 전 선원 건강 이상 무</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:00</td>
+						<td style="text-align:left; font-weight:bold; ">YOSEMITE TRADER</td>
+						<td>  </td>
+						<td>WUSD</td>
+						<td>28,777</td>
+						<td>179</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">YMP#3</td>
+						<td style="font-weight:bold; ">SP#8</td>
+						<td>JNC</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">정시 승선 부탁드립니다.</td>
+					</tr>
+					<tr>
+						<td>20</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>07:30</td>
+						<td style="text-align:left; font-weight:bold; ">MORNING CALYPSO</td>
+						<td>  </td>
+						<td>3FIK5</td>
+						<td>59,580</td>
+						<td>199</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">HCP#1</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">유코 / 전항지 목포 / 전 선원 건강 이상 무</td>
+					</tr>
+					<tr>
+						<td>21</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>08:00</td>
+						<td style="text-align:left; font-weight:bold; ">EVER CONCISE</td>
+						<td>  </td>
+						<td>3E3545</td>
+						<td>18,658</td>
+						<td>171</td>
+						<td>8.9</td>
+						<td style="font-weight:bold; ">UNCT#2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>1</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>08:00</td>
+						<td style="text-align:left; font-weight:bold; ">JIN HAI TAO</td>
+						<td>  </td>
+						<td>BPSA</td>
+						<td>5,738</td>
+						<td>122</td>
+						<td>7.3</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td style="font-weight:bold; ">SOILG-3</td>
+						<td>세화</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td></td>
+						<td>2</td>
+						<td>울산</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 재연락</td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>08:00</td>
+						<td style="text-align:left; font-weight:bold; ">SILVER LEO</td>
+						<td>  </td>
+						<td>3FJT4</td>
+						<td>5,760</td>
+						<td>115</td>
+						<td>7.6</td>
+						<td style="font-weight:bold; ">SOILG-3</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>가나</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>24</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>08:30</td>
+						<td style="text-align:left; font-weight:bold; ">FRONT SPEY</td>
+						<td>  </td>
+						<td>V7A6277</td>
+						<td>154,379</td>
+						<td>333</td>
+						<td>21.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">SKB#3</td>
+						<td>울마</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td></td>
+						<td></td>
+						<td style="text-align:left; ">랑데부0930hrs/기상악화 대비 Tailing Tug 5,000hp이상</td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>08:30</td>
+						<td style="text-align:left; font-weight:bold; ">SEAWAYS MIA</td>
+						<td>  </td>
+						<td>V7A6972</td>
+						<td>29,305</td>
+						<td>183</td>
+						<td>7.5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">SBTS#2</td>
+						<td>아성</td>
+						<td>B</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">좌현접안(크레인사용)요청/입항과 동시 접안 부탁드립니다/전출항지 호주 </td>
+					</tr>
+					<tr>
+						<td>26</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>09:30</td>
+						<td style="text-align:left; font-weight:bold; ">SAEHAN MIRINAE</td>
+						<td>  </td>
+						<td>D8XT</td>
+						<td>3,187</td>
+						<td>97</td>
+						<td>4.2</td>
+						<td style="font-weight:bold; ">P#32</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>새한</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">재연락</td>
+					</tr>
+					<tr>
+						<td>27</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>10:00</td>
+						<td style="text-align:left; font-weight:bold; ">BRIDGEWATER DISCOVERY</td>
+						<td>  </td>
+						<td>E6CN3</td>
+						<td>2,996</td>
+						<td>76</td>
+						<td>4.4</td>
+						<td style="font-weight:bold; ">YMP#1</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>SM</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>0</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; ">재연락</td>
+					</tr>
+					<tr>
+						<td>28</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>10:00</td>
+						<td style="text-align:left; font-weight:bold; ">CRYSTAL RAY</td>
+						<td>  </td>
+						<td>C6RI2</td>
+						<td>57,772</td>
+						<td>199</td>
+						<td>7.8</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">YMP#1</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">글로비스 / 전항지 FREEPORT / 전 선원 건강 이상 무 / HEAD 7번 &amp; STERN 19번</td>
+					</tr>
+					<tr>
+						<td>29</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>11:00</td>
+						<td style="text-align:left; font-weight:bold; ">AQUARIUS T</td>
+						<td>  </td>
+						<td>V7A4148</td>
+						<td>29,130</td>
+						<td>183</td>
+						<td>10.0</td>
+						<td style="font-weight:bold; ">SP#3</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>아성</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>코리</td>
+						<td>승검</td>
+						<td style="text-align:left; ">대리점확인후</td>
+					</tr>
+					<tr>
+						<td>30</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>11:00</td>
+						<td style="text-align:left; font-weight:bold; ">GEM NO.2</td>
+						<td>  </td>
+						<td>3FQW3</td>
+						<td>156,853</td>
+						<td>330</td>
+						<td>11.0</td>
+						<td style="font-weight:bold; ">SOIL-BY NO.2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>쌍용</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+						<td></td>
+						<td style="text-align:left; ">차항 싱가포르</td>
+					</tr>
+					<tr>
+						<td>31</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>12:00</td>
+						<td style="text-align:left; font-weight:bold; ">CS BREEZE</td>
+						<td>  </td>
+						<td>3E3975</td>
+						<td>5,723</td>
+						<td>109</td>
+						<td>5.0</td>
+						<td style="font-weight:bold; ">SP#5</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>현대</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>32</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>12:30</td>
+						<td style="text-align:left; font-weight:bold; ">APOLLO BULKER</td>
+						<td>  </td>
+						<td>3FBC6</td>
+						<td>21,483</td>
+						<td>177</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">SP#6</td>
+						<td style="font-weight:bold; ">OP#3</td>
+						<td>신양</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">재 연락 드림, 도선, 예선 및 라인 비용 아성마린으로 청구 요망</td>
+					</tr>
+					<tr>
+						<td>33</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>13:00</td>
+						<td style="text-align:left; font-weight:bold; ">HATTHAYA NAREE</td>
+						<td>  </td>
+						<td>9V9984</td>
+						<td>24,868</td>
+						<td>180</td>
+						<td>7.3</td>
+						<td style="font-weight:bold; ">E-2</td>
+						<td style="font-weight:bold; ">SP#6</td>
+						<td>신양</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>2</td>
+						<td>아세</td>
+						<td>승검</td>
+						<td style="text-align:left; ">기 접안선(APOLLO BULKER)과 스위치 요망, 선원 건강 이상 무</td>
+					</tr>
+					<tr>
+						<td>34</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>14:30</td>
+						<td style="text-align:left; font-weight:bold; ">CRANE ARIEL</td>
+						<td>  </td>
+						<td>3FWS8</td>
+						<td>4,862</td>
+						<td>107</td>
+						<td>6.2</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td style="font-weight:bold; ">SK#4-1</td>
+						<td>NEO</td>
+						<td>L</td>
+						<td>P</td>
+						<td>Y</td>
+						<td>2</td>
+						<td>월드</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 확인 후</td>
+					</tr>
+					<tr>
+						<td>35</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>15:00</td>
+						<td style="text-align:left; font-weight:bold; ">PANCON SUNSHINE</td>
+						<td>  </td>
+						<td>D7CO</td>
+						<td>9,923</td>
+						<td>148</td>
+						<td>7.3</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">UNCT#1</td>
+						<td>협성</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>1</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; ">VST 참여선박, BOW 740KW</td>
+					</tr>
+					<tr>
+						<td>36</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">JIN HAI TAO</td>
+						<td>  </td>
+						<td>BPSA</td>
+						<td>5,738</td>
+						<td>122</td>
+						<td>7.9</td>
+						<td style="font-weight:bold; ">SOILG-2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>세화</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>울산</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 재연락</td>
+					</tr>
+					<tr>
+						<td>37</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">MORNING CALYPSO</td>
+						<td>  </td>
+						<td>3FIK5</td>
+						<td>59,580</td>
+						<td>199</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">HCP#1</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">유코</td>
+					</tr>
+					<tr>
+						<td>38</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>16:00</td>
+						<td style="text-align:left; font-weight:bold; ">UNIQUE HARMONY</td>
+						<td>  </td>
+						<td>VRJM7</td>
+						<td>29,441</td>
+						<td>182</td>
+						<td>11.0</td>
+						<td style="font-weight:bold; ">UNCT#4</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>삼진</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>39</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>16:45</td>
+						<td style="text-align:left; font-weight:bold; ">MORNING CELLO</td>
+						<td>  </td>
+						<td>3FBI3</td>
+						<td>57,542</td>
+						<td>199</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">P#62</td>
+						<td style="font-weight:bold; ">HCP#1</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>울산</td>
+						<td></td>
+						<td style="text-align:left; ">유코 / 자동부두 강취 : 코리아</td>
+					</tr>
+					<tr>
+						<td>40</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>16:45</td>
+						<td style="text-align:left; font-weight:bold; ">THERMOPYLAE</td>
+						<td>  </td>
+						<td>9HA3539</td>
+						<td>75,283</td>
+						<td>199</td>
+						<td>8.8</td>
+						<td style="font-weight:bold; ">HCP#2</td>
+						<td style="font-weight:bold; ">P#62</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">유코 / 본항 강취 : 울산 / HEAD 19번 &amp; STERN 6번</td>
+					</tr>
+					<tr>
+						<td>41</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>17:00</td>
+						<td style="text-align:left; font-weight:bold; ">CRYSTAL RAY</td>
+						<td>  </td>
+						<td>C6RI2</td>
+						<td>57,772</td>
+						<td>199</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">YMP#1</td>
+						<td style="font-weight:bold; ">HCP#2</td>
+						<td>윌헴</td>
+						<td>L</td>
+						<td><span class="redTxt">S</span></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>코리</td>
+						<td></td>
+						<td style="text-align:left; ">글로비스</td>
+					</tr>
+					<tr>
+						<td>42</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>17:00</td>
+						<td style="text-align:left; font-weight:bold; ">YONG SHENG VII</td>
+						<td>  </td>
+						<td>3FGM9</td>
+						<td>2,982</td>
+						<td>98</td>
+						<td>4.0</td>
+						<td style="font-weight:bold; ">P#1</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>일진</td>
+						<td>B</td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>43</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>17:30</td>
+						<td style="text-align:left; font-weight:bold; ">HONG KAI</td>
+						<td>  </td>
+						<td>BONU9</td>
+						<td>4,765</td>
+						<td>109</td>
+						<td>5.5</td>
+						<td style="font-weight:bold; ">LPG#2</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>울마</td>
+						<td>L</td>
+						<td>P</td>
+						<td></td>
+						<td>1</td>
+						<td>진산</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>44</td>
+						<td></td>
+						<td>
+														<span class="redTxt">○</span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>18:00</td>
+						<td style="text-align:left; font-weight:bold; ">SPRING ALPHA</td>
+						<td>  </td>
+						<td>240030</td>
+						<td>2,212</td>
+						<td>89</td>
+						<td>6.5</td>
+						<td style="font-weight:bold; ">KET#4</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>가나</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; ">재연락</td>
+					</tr>
+					<tr>
+						<td>45</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:00</td>
+						<td style="text-align:left; font-weight:bold; ">ECO YOSEMITE PARK</td>
+						<td>  </td>
+						<td>V7A2534</td>
+						<td>29,723</td>
+						<td>183</td>
+						<td>11.3</td>
+						<td style="font-weight:bold; ">SK#6</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>삼진</td>
+						<td>L</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>46</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:00</td>
+						<td style="text-align:left; font-weight:bold; ">SULFUR BRAVE</td>
+						<td>  </td>
+						<td>3FEK7</td>
+						<td>3,887</td>
+						<td>100</td>
+						<td>4.5</td>
+						<td style="font-weight:bold; ">E-1</td>
+						<td style="font-weight:bold; ">SOILC1</td>
+						<td>아성</td>
+						<td>B</td>
+						<td><span class="redTxt">S</span></td>
+						<td></td>
+						<td>2</td>
+						<td>영남</td>
+						<td></td>
+						<td style="text-align:left; ">대리점확인후</td>
+					</tr>
+					<tr>
+						<td>47</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>20:30</td>
+						<td style="text-align:left; font-weight:bold; ">WOOLIM 7</td>
+						<td>  </td>
+						<td>DSME</td>
+						<td>8,072</td>
+						<td>120</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td style="font-weight:bold; ">UTT</td>
+						<td>한남</td>
+						<td>L</td>
+						<td>P</td>
+						<td>Y</td>
+						<td>1</td>
+						<td>아세</td>
+						<td></td>
+						<td style="text-align:left; ">대리점 확인 후</td>
+					</tr>
+					<tr>
+						<td>48</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>22:00</td>
+						<td style="text-align:left; font-weight:bold; ">SEARAMBLER</td>
+						<td>  </td>
+						<td>9HA5395</td>
+						<td>25,348</td>
+						<td>180</td>
+						<td>9.4</td>
+						<td style="font-weight:bold; ">P/S(E-2)</td>
+						<td style="font-weight:bold; ">P#22</td>
+						<td>신양</td>
+						<td>L</td>
+						<td>P</td>
+						<td>Y</td>
+						<td>2</td>
+						<td>아세</td>
+						<td>승검</td>
+						<td style="text-align:left; ">기 접안선 (Kookyang singapore) 이안후 스위치 요망 / 전 선원 건강 상태 양호함 </td>
+					</tr>
+					<tr>
+						<td>49</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>22:00</td>
+						<td style="text-align:left; font-weight:bold; ">WAN HAI 353</td>
+						<td>  </td>
+						<td>9V7381</td>
+						<td>30,519</td>
+						<td>204</td>
+						<td>9.0</td>
+						<td style="font-weight:bold; ">UNCT#3</td>
+						<td style="font-weight:bold; ">P/S</td>
+						<td>그레</td>
+						<td>L</td>
+						<td></td>
+						<td>Y</td>
+						<td>2</td>
+						<td>대송</td>
+						<td></td>
+						<td style="text-align:left; "></td>
+					</tr>
+					<tr>
+						<td>50</td>
+						<td></td>
+						<td>
+														<span class="redTxt"></span>
+													</td>
+						<!--td><span class="redTxt"></span></td-->
+						<td>23:00</td>
+						<td style="text-align:left; font-weight:bold; ">ESTEEM ENERGY</td>
+						<td>  </td>
+						<td>3FXI8</td>
+						<td>29,651</td>
+						<td>183</td>
+						<td>8.0</td>
+						<td style="font-weight:bold; ">P/S(E-2)</td>
+						<td style="font-weight:bold; ">SK#6</td>
+						<td>삼진</td>
+						<td>B</td>
+						<td><span class="redTxt">S</span></td>
+						<td></td>
+						<td>2</td>
+						<td>글로</td>
+						<td>승검</td>
+						<td style="text-align:left; ">대리점 확인 후 / 우현접안입니다 / 승선검역대상입니다. </td>
+					</tr></tbody>
+					</table>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+
+
+</body></html>
