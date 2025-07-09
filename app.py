@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import firebase_admin
 from firebase_admin import credentials, messaging
 
+# Firebase 초기화
 if not firebase_admin._apps:
     firebase_credentials_json = os.environ.get("FIREBASE_CREDENTIALS_JSON")
     if firebase_credentials_json:
@@ -18,12 +19,13 @@ if not firebase_admin._apps:
 
 app = Flask(__name__)
 
+# 파일 경로 상수
 DATA_FILE = 'previous_data.json'
 FAVORITES_FILE = 'favorites.json'
 ALARM_MODE_FILE = 'alarm_modes.json'
-
 HTML_FILE = 'ulsanpilot.html'
 
+# HTML 기반 선박 데이터 파싱 함수
 def fetch_pilot_data():
     with open(HTML_FILE, "r", encoding="utf-8") as f:
         html = f.read()
@@ -55,6 +57,7 @@ def fetch_pilot_data():
 
     return data_list
 
+# JSON 파일 로드 및 저장 관련 함수들
 def load_json(path, default):
     if os.path.exists(path):
         try:
@@ -104,6 +107,7 @@ def remove_unlisted_ships_from_favorites(latest_ships):
     if modified:
         save_to_file(FAVORITES_FILE, favorites)
 
+# FCM 알림 전송
 def send_fcm_notification(token, alert_messages, alarm_mode=False):
     print(f"📨 전송 대상 토큰: {token} / 알람 모드: {'ON' if alarm_mode else 'OFF'}")
 
@@ -140,6 +144,7 @@ def send_notifications_to_users(changes, alerts):
             alarm_mode = alarm_modes.get(token, False)
             send_fcm_notification(token, matched_alerts, alarm_mode)
 
+# API 엔드포인트
 @app.route('/api/pilotships')
 def get_pilot_ships():
     try:
@@ -216,6 +221,7 @@ def set_alarm_mode():
     print(f"✅ 알람 모드 저장: {token} → {'ON' if mode else 'OFF'}")
     return jsonify({"status": "success"})
 
+# 백그라운드 주기 확인
 def background_scheduler():
     while True:
         try:
@@ -232,6 +238,7 @@ def background_scheduler():
             print(f"❌ 스케줄러 오류: {e}")
         time.sleep(60)
 
+# ✅ Railway 호환을 위한 실행부
 if __name__ == "__main__":
     try:
         print("🚀 초기 데이터 정리 중...")
@@ -239,5 +246,8 @@ if __name__ == "__main__":
         remove_unlisted_ships_from_favorites(latest)
     except Exception as e:
         print(f"❌ 초기 처리 실패: {e}")
+
     threading.Thread(target=background_scheduler, daemon=True).start()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+
+    port = int(os.environ.get("PORT", 5000))  # Railway가 제공하는 포트 사용
+    app.run(host="0.0.0.0", port=port, debug=True)
